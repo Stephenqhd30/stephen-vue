@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from "vue";
-import { updateUserUsingPost } from "../../../servers/api/userController.ts";
+import { updateUserUsingPost } from "../../../api/userController.ts";
 import { message } from "ant-design-vue";
 
 import { useLoginUserStore } from "../../../store";

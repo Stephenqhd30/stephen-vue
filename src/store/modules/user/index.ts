@@ -1,6 +1,6 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
-import {getLoginUserUsingGet} from '../../../servers/api/userController.ts';
+import {getLoginUserUsingGet} from '../../../api/userController.ts';
 import {ACCESS_ENUM} from '../../../constants';
 
 /**

@@ -1,12 +1,13 @@
-// @ts-ignore
 /* eslint-disable */
-import request from '../../request.ts';
+// @ts-ignore
+import request from '../request.ts';
+import * as API from './types';
 
 /** check GET /api/ */
 export async function checkUsingGet(
-  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  // 叠加生成的Param类型 (非body参数openapi默认没有生成对象)
   params: API.checkUsingGETParams,
-  options?: { [key: string]: any },
+  options?: { [key: string]: unknown }
 ) {
   return request<string>('/api/', {
     method: 'GET',
@@ -18,15 +19,17 @@ export async function checkUsingGet(
 }
 
 /** receiveMessage POST /api/ */
-export async function receiveMessageUsingPost(options?: { [key: string]: any }) {
-  return request<any>('/api/', {
+export async function receiveMessageUsingPost(options?: {
+  [key: string]: unknown;
+}) {
+  return request<unknown>('/api/', {
     method: 'POST',
     ...(options || {}),
   });
 }
 
 /** setMenu GET /api/setMenu */
-export async function setMenuUsingGet(options?: { [key: string]: any }) {
+export async function setMenuUsingGet(options?: { [key: string]: unknown }) {
   return request<string>('/api/setMenu', {
     method: 'GET',
     ...(options || {}),
