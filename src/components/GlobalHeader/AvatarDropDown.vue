@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import { UserOutlined } from "@ant-design/icons-vue";
 import { useRouter } from "vue-router";
-import { userLogoutUsingPost } from "../../api/userController.ts";
+import { userLogoutUsingPost } from "@/api/userController.ts";
 import { MenuProps } from "ant-design-vue";
+import {LoginUserVO} from '@/api/types.ts';
 
 interface AvatarDropDownProps {
-  user: API.LoginUserVO;
+  user: LoginUserVO;
 }
 const props = withDefaults(defineProps<AvatarDropDownProps>(), {
-  user: () => ({} as API.LoginUserVO),
+  user: () => ({}) as LoginUserVO
 });
 const router = useRouter();
 

@@ -4,10 +4,10 @@ import {
   IdcardTwoTone,
   SmileTwoTone,
 } from "@ant-design/icons-vue";
-import { useLoginUserStore } from "../../../store";
-import {watchEffect} from 'vue';
+import { watchEffect } from "vue";
+import useUserStore from '@/store/modules/user';
 
-const loginUserStore = useLoginUserStore();
+const loginUserStore = useUserStore();
 const fetchLoginUser = async () => {
   await loginUserStore.fetchLoginUser();
 };
@@ -16,7 +16,6 @@ const loginUser = loginUserStore.loginUser;
 watchEffect(() => {
   fetchLoginUser();
 });
-
 </script>
 
 <template>

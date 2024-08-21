@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { CopyrightCircleOutlined, GithubOutlined } from "@ant-design/icons-vue";
-import { AUTHOR, AUTHOR_NAME, BLOG, GITHUB, TITLE } from "../../constants";
+import { AUTHOR, AUTHOR_NAME, BLOG, GITHUB, TITLE } from '@/constants';
 </script>
 
 <template>
   <div id="global-footer">
     <a-layout-footer class="footer">
-      <a-space size="middle">
+      <a-space size="small">
         <a-typography-link :href="GITHUB" class="link" target="_blank">
           {{ TITLE }}
         </a-typography-link>
@@ -28,8 +28,6 @@ import { AUTHOR, AUTHOR_NAME, BLOG, GITHUB, TITLE } from "../../constants";
   text-align: center;
   color: rgba(0, 0, 0, 0.88);
   font-size: 14px;
-  background: #f5f5f5;
-
   .link {
     color: #000000a6;
   }

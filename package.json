@@ -27,6 +27,7 @@
     "@types/node": "^20.12.12",
     "@vitejs/plugin-vue": "^5.0.4",
     "less": "^4.2.0",
+    "openapi-ts-request": "^0.4.7",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vue-tsc": "^2.0.6"

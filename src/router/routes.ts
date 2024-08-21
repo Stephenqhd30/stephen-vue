@@ -1,36 +1,28 @@
-import {RouteRecordRaw} from 'vue-router';
-import Login from '../views/user/Login.vue';
-import NoAuthPage from '../views/exception/NoAuthPage.vue';
-import {ACCESS_ENUM} from '../constants';
-import UserLayout from '../layouts/UserLayout.vue';
-import NotFoundPage from '../views/exception/NotFoundPage.vue';
-import AdminUserPage from '../views/admin/AdminUserPage.vue';
-import UserCenter from '../views/account/UserCenter.vue';
-import UserSettings from '../views/account/UserSettings.vue';
-import IndexPage from '../views/IndexPage.vue';
+import { RouteRecordRaw } from "vue-router";
+import IndexPage from "../views/IndexPage.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "主页",
     component: IndexPage,
-    children: [
-      {path: "/:category", component: IndexPage},
-    ]
   },
   {
     path: "/admin",
-    name: "管理页",
+    name: "管理页面",
     redirect: "/admin/user",
-    meta: { title: "关于", access: ACCESS_ENUM.ADMIN },
     children: [
-      { path: "/admin/user", name: "用户管理", component: AdminUserPage },
+      {
+        path: '/admin/user',
+        name: '用户管理',
+        component: import('../views/admin/AdminUserPage.vue')
+      }
     ],
   },
   {
     path: "/user",
-    name: "用户页",
-    component: UserLayout,
+    name: '用户界面',
+    component: import('../layouts/UserLayout.vue'),
     meta: {
       hideInMenu: true,
     },
@@ -38,7 +30,12 @@ export const routes: Array<RouteRecordRaw> = [
       {
         path: "/user/login",
         name: "用户登录",
-        component: Login,
+        component: import('../views/user/login/UserLoginPage.vue')
+      },
+      {
+        path: '/user/register',
+        name: '用户注册',
+        component: import('../views/user/register/UserRegisterPage.vue')
       },
     ],
   },
@@ -50,25 +47,25 @@ export const routes: Array<RouteRecordRaw> = [
       {
         path: "/account/center",
         name: "个人中心",
-        component: UserCenter,
+        component: import('../views/account/AccountCenter.vue')
       },
       {
         path: "/account/settings",
         name: "个人设置",
-        component: UserSettings,
+        component: import('../views/account/AccountSettings.vue')
       },
     ],
   },
   {
     path: "/noAuth",
     name: "无权限",
-    component: NoAuthPage,
+    component: import('../views/exception/NoAuthPage.vue'),
     meta: { hideInMenu: true },
   },
   {
     path: "/404",
     name: "NotFound",
-    component: NotFoundPage,
+    component: import('../views/exception/NotFoundPage.vue'),
     meta: {
       hideInMenu: true,
     },
@@ -76,5 +73,6 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: "/:catchAll(.*)", // 不识别的path自动匹配404
     redirect: "/404",
+    meta: { hideInMenu: true }
   },
 ];

@@ -2,10 +2,10 @@
 import {
   deleteUserUsingPost,
   listUserByPageUsingPost,
-} from "../../api/userController.ts";
+} from "@/api/userController.ts";
 import { ref, watchEffect } from "vue";
 import { message } from "ant-design-vue";
-import { dateFormat } from "../../utils";
+import {dateFormatDefault} from '@/utils';
 // 初始化搜索条件(不应该被修改)
 const initSearchParams = {
   current: 1,
@@ -124,13 +124,13 @@ const columns = [
     title: "创建时间",
     dataIndex: "createTime",
     key: "createTime",
-    customRender: ({ value }: { value: string }) => dateFormat(value),
+    customRender: ({ value }: { value: string }) => dateFormatDefault(value)
   },
   {
     title: "更新时间",
     dataIndex: "updateTime",
     key: "updateTime",
-    customRender: ({ value }: { value: string }) => dateFormat(value),
+    customRender: ({ value }: { value: string }) => dateFormatDefault(value)
   },
   {
     title: "操作",
@@ -217,7 +217,7 @@ const columns = [
             title="确定删除吗"
             @confirm="doDelete(record)"
           >
-            <a-button danger>删除</a-button>
+            <a-button type="text" danger>删除</a-button>
           </a-popconfirm>
         </template>
       </template>

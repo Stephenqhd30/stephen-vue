@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from "vue";
-import { updateUserUsingPost } from "../../../api/userController.ts";
+import { updateUserUsingPost } from "@/api/userController.ts";
 import { message } from "ant-design-vue";
 
-import { useLoginUserStore } from "../../../store";
+import {LoginUserVO} from '@/api/types.ts';
+import useUserStore from '@/store/modules/user';
 
-const loginUserStore = useLoginUserStore();
+const loginUserStore = useUserStore();
 const fetchLoginUser = async () => {
   await loginUserStore.fetchLoginUser();
 };
@@ -20,10 +21,10 @@ const layout = {
   wrapperCol: { span: 16 },
 };
 
-const formState = ref<API.LoginUserVO>({
+const formState = ref<LoginUserVO>({
   ...loginUser,
 });
-const handleUpdate = async (values: API.LoginUserVO) => {
+const handleUpdate = async (values: LoginUserVO) => {
   console.log(values);
   try {
     const res = await updateUserUsingPost({

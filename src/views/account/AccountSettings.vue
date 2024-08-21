@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useLoginUserStore } from "../../store";
-import { USER_CENTER_TITLE } from "../../constants";
+import { USER_CENTER_TITLE } from '@/constants';
 import {
   HomeOutlined,
   SecurityScanOutlined,
@@ -8,8 +7,9 @@ import {
 } from "@ant-design/icons-vue";
 import { ref } from "vue";
 import BaseSetting from "../../components/account/setting/BaseSetting.vue";
+import useUserStore from '@/store/modules/user';
 
-const loginUserStore = useLoginUserStore();
+const loginUserStore = useUserStore();
 let loginUser = loginUserStore.loginUser;
 const activeKey = ref<string>("base");
 </script>

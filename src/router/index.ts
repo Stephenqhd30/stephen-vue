@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { routes } from "./routes.ts";
-import { useLoginUserStore } from "../store";
-import { ACCESS_ENUM } from "../constants";
+import { ACCESS_ENUM } from '@/constants';
 import { checkAccess } from "../utils";
+import useUserStore from '@/store/modules/user';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,7 +14,7 @@ const router = createRouter({
  */
 // @ts-ignore
 router.beforeEach(async (to, from, next) => {
-  const loginUserStore = useLoginUserStore();
+  const loginUserStore = useUserStore();
   let loginUser = loginUserStore.loginUser;
   if (!loginUser || !loginUser.userRole) {
     // 加 await 是为了保证用户登陆成功并获取到用户的值之后，在执行后续操作

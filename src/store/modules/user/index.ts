@@ -1,13 +1,13 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
-import {getLoginUserUsingGet} from '../../../api/userController.ts';
-import {ACCESS_ENUM} from '../../../constants';
+import { getLoginUserUsingGet } from "@/api/userController.ts";
+import { ACCESS_ENUM } from "@/constants";
 
 /**
  * 登录用户信息全局状态
  */
-const useLoginUserStore = defineStore(
-  "loginUserVO",
+const useUserStore = defineStore(
+  "UserVO",
   () => {
     const loginUser = ref<API.LoginUserVO>({});
     /**
@@ -37,9 +37,9 @@ const useLoginUserStore = defineStore(
       // @ts-ignore
       enable: true,
       // 选择存储方式和内容，
-      strategies: [{ storage: localStorage, paths: ["loginUser"] }],
+      strategies: [{ storage: localStorage, paths: ["UserVO"] }],
     },
-  }
+  },
 );
 
-export default useLoginUserStore;
+export default useUserStore;

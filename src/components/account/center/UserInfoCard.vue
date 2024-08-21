@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { dateFormat } from "../../../utils";
-import { useLoginUserStore } from "../../../store";
 import { watchEffect } from "vue";
+import { dateFormatDefault } from "../../../utils";
+import useUserStore from '@/store/modules/user';
 
-const loginUserStore = useLoginUserStore();
+const loginUserStore = useUserStore();
 const fetchLoginUser = async () => {
   await loginUserStore.fetchLoginUser();
 };
@@ -12,7 +12,6 @@ const loginUser = loginUserStore.loginUser;
 watchEffect(() => {
   fetchLoginUser();
 });
-
 </script>
 
 <template>
@@ -32,10 +31,10 @@ watchEffect(() => {
         >{{ loginUser.userRole === "user" ? "普通用户" : "管理员" }}
       </a-descriptions-item>
       <a-descriptions-item label="创建时间">
-        {{ dateFormat(loginUser.createTime as string) }}
+        {{ dateFormatDefault(loginUser.createTime as string) }}
       </a-descriptions-item>
       <a-descriptions-item label="更新时间">
-        {{ dateFormat(loginUser.updateTime as string) }}
+        {{ dateFormatDefault(loginUser.updateTime as string) }}
       </a-descriptions-item>
     </a-descriptions>
   </a-card>

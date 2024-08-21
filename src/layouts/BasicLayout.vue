@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import GlobalHeader from "../components/header/GlobalHeader.vue";
-import GlobalFooter from "../components/footer/GlobalFooter.vue";
+import GlobalHeader from "@/components/GlobalHeader/GlobalHeader.vue";
+import GlobalFooter from "@/components/GlobalFooter/GlobalFooter.vue";
 </script>
 
 <template>
@@ -26,7 +26,7 @@ import GlobalFooter from "../components/footer/GlobalFooter.vue";
     flex-direction: column;
     background-color: transparent;
     position: relative;
-    padding: 32px;
+    padding: 24px;
     box-sizing: border-box;
   }
 }

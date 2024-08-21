@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { message } from "ant-design-vue";
 import { UploadOutlined } from "@ant-design/icons-vue";
 import { uploadFileUsingPost } from "../api/fileController.ts";
-import { useLoginUserStore } from "../store";
+import useUserStore from '@/store/modules/user';
 
 interface Props {
   biz: string;
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
   value: "",
 })
 
-const loginUserStore = useLoginUserStore();
+const loginUserStore = useUserStore();
 const loginUser = loginUserStore.loginUser;
 let userAvatar = loginUser.userAvatar;
 /**

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { useLoginUserStore } from "../../store";
-import { USER_CENTER_TITLE } from "../../constants";
+import { USER_CENTER_TITLE } from "@/constants";
 import UserCard from "../../components/account/center/UserCard.vue";
 import UserInfoCard from "../../components/account/center/UserInfoCard.vue";
 import { watchEffect } from "vue";
+import useUserStore from '@/store/modules/user';
 
-const loginUserStore = useLoginUserStore();
+const loginUserStore = useUserStore();
 const fetchLoginUser = async () => {
   await loginUserStore.fetchLoginUser();
 };
@@ -17,7 +17,11 @@ watchEffect(() => {
 </script>
 
 <template>
-  <a-card :extra="new Date().toLocaleDateString()" :title="USER_CENTER_TITLE">
+  <a-card
+    id="account-center"
+    :extra="new Date().toLocaleDateString()"
+    :title="USER_CENTER_TITLE"
+  >
     <a-col :span="24">
       <a-space>
         <a-row :span="8">
@@ -31,4 +35,10 @@ watchEffect(() => {
   </a-card>
 </template>
 
-<style scoped></style>
+<style scoped>
+#account-center {
+  max-width: 1200px;
+  margin: 0 auto;
+  align-content: center;
+}
+</style>

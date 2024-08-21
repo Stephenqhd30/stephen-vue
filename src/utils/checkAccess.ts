@@ -1,12 +1,13 @@
-import {ACCESS_ENUM} from '../constants';
+import { ACCESS_ENUM } from "@/constants";
+import { LoginUserVO } from "@/api/types.ts";
 
 /**
  * 检查权限工具类(检查当前登录用户是否有权限)
- * @param loginUser
+ * @param loginUser 当前登录的用户
  * @param needAccess
  */
 const checkAccess = (
-  loginUser: API.LoginUserVO,
+  loginUser: LoginUserVO,
   needAccess = ACCESS_ENUM.NOT_LOGIN
 ) => {
   const loginUserAccess = loginUser?.userRole ?? ACCESS_ENUM.NOT_LOGIN;
