@@ -3,12 +3,14 @@ import gfm from "@bytemd/plugin-gfm";
 import highlight from "@bytemd/plugin-highlight";
 // @ts-ignore
 import { Viewer } from "@bytemd/vue-next";
+import 'bytemd/dist/index.css'
+import "highlight.js/styles/vs.css";
 
 /**
  * 定义组件属性类型
  */
 interface Props {
-  value: string;
+  text: string;
 }
 
 /**
@@ -16,7 +18,7 @@ interface Props {
  */
 // @ts-ignore
 const props = withDefaults(defineProps<Props>(), {
-  value: () => "",
+  text: "",
 });
 
 const plugins = [
@@ -27,7 +29,7 @@ const plugins = [
 </script>
 
 <template>
-  <Viewer :plugins="plugins" :value="value" />
+  <Viewer :plugins="plugins" :value="props.text" />
 </template>
 
 <style scoped></style>

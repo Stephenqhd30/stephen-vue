@@ -1,7 +1,17 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import MdEditor from '@/components/MdEditor.vue';
+import {ref} from 'vue';
+import MdViewer from '@/components/MdViewer.vue';
+
+const text = ref<string>('')
+const changeText = (value: string) => {
+  text.value = value;
+}
+</script>
 
 <template>
-  <h2>主页</h2>
+  <MdEditor :text="text" @change="changeText" />
+  <MdViewer :text="text" />
 </template>
 
 <style scoped></style>

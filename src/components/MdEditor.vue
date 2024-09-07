@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 // @ts-ignore
 import { Editor } from "@bytemd/vue-next";
-import { ref } from "vue";
 import highlight from "@bytemd/plugin-highlight";
 import gfm from "@bytemd/plugin-gfm";
+import 'bytemd/dist/index.css'
+import "highlight.js/styles/vs.css";
 
 const plugins = [
   gfm(),
@@ -11,18 +12,19 @@ const plugins = [
   // 这里可以加载更多扩展插件
 ];
 
-const value = ref("");
-const handleChange = (v: string) => {
-  value.value = v;
-};
+interface Props {
+  text: string;
+  onChange: () => void;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  text: "",
+  onChange: () => {},
+});
 </script>
 
 <template>
-  <Editor
-    :plugins="plugins"
-    :value="value"
-    @change="handleChange"
-  />
+  <Editor :plugins="plugins" :value="props.text" @change="props.onChange" />
 </template>
 
 <style scoped></style>
