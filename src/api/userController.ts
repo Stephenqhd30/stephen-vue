@@ -73,6 +73,39 @@ export async function getUserVoByIdUsingGet(
   });
 }
 
+/** listMatchUserVO POST /api/user/list/match/user/vo */
+export async function listMatchUserVoUsingPost(
+  body: API.UserMatchRequest,
+  options?: { [key: string]: unknown }
+) {
+  return request<API.BaseResponseListUserVO_>('/api/user/list/match/user/vo', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** listMatchUserVOByPage POST /api/user/list/match/user/vo/page */
+export async function listMatchUserVoByPageUsingPost(
+  body: API.UserQueryRequest,
+  options?: { [key: string]: unknown }
+) {
+  return request<API.BaseResponsePageUserVO_>(
+    '/api/user/list/match/user/vo/page',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: body,
+      ...(options || {}),
+    }
+  );
+}
+
 /** listUserByPage POST /api/user/list/page */
 export async function listUserByPageUsingPost(
   body: API.UserQueryRequest,
@@ -175,7 +208,7 @@ export async function updateUserUsingPost(
 
 /** updateMyUser POST /api/user/update/my */
 export async function updateMyUserUsingPost(
-  body: API.UserUpdateMyRequest,
+  body: API.UserEditRequest,
   options?: { [key: string]: unknown }
 ) {
   return request<API.BaseResponseBoolean_>('/api/user/update/my', {

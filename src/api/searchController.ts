@@ -3,12 +3,12 @@
 import request from '../request.ts';
 import * as API from './types';
 
-/** doThumb POST /api/post_thumb/ */
-export async function doThumbUsingPost(
-  body: API.PostThumbAddRequest,
+/** doSearchAll POST /api/es/all */
+export async function doSearchAllUsingPost(
+  body: API.SearchRequest,
   options?: { [key: string]: unknown }
 ) {
-  return request<API.BaseResponseInt_>('/api/post_thumb/', {
+  return request<API.BaseResponseSearchVOObject_>('/api/es/all', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -18,27 +18,27 @@ export async function doThumbUsingPost(
   });
 }
 
-/** listFavourPostByPage POST /api/post_thumb/list/page */
-export async function listFavourPostByPageUsingPost1(
-  body: API.PostFavourQueryRequest,
-  options?: { [key: string]: unknown }
-) {
-  return request<API.BaseResponsePagePostVO_>('/api/post_thumb/list/page', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: body,
-    ...(options || {}),
-  });
-}
-
-/** listMyThumbPostByPage POST /api/post_thumb/my/list/page */
-export async function listMyThumbPostByPageUsingPost(
+/** searchPostVOByPage POST /api/es/search/post/page/vo */
+export async function searchPostVoByPageUsingPost(
   body: API.PostQueryRequest,
   options?: { [key: string]: unknown }
 ) {
-  return request<API.BaseResponsePagePostVO_>('/api/post_thumb/my/list/page', {
+  return request<API.BaseResponsePagePostVO_>('/api/es/search/post/page/vo', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** searchUserVOByPage POST /api/es/search/user/page/vo */
+export async function searchUserVoByPageUsingPost(
+  body: API.UserQueryRequest,
+  options?: { [key: string]: unknown }
+) {
+  return request<API.BaseResponsePageUserVO_>('/api/es/search/user/page/vo', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
