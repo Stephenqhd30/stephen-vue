@@ -1,17 +1,16 @@
-/* eslint-disable */
 // @ts-ignore
-import request from '../request.ts';
-import * as API from './types';
+/* eslint-disable */
+import request from "@/request.ts";
 
 /** doThumb POST /api/post_thumb/ */
 export async function doThumbUsingPost(
   body: API.PostThumbAddRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseInt_>('/api/post_thumb/', {
-    method: 'POST',
+  return request<API.BaseResponseInt_>("/api/post_thumb/", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -21,12 +20,12 @@ export async function doThumbUsingPost(
 /** listFavourPostByPage POST /api/post_thumb/list/page */
 export async function listFavourPostByPageUsingPost1(
   body: API.PostFavourQueryRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponsePagePostVO_>('/api/post_thumb/list/page', {
-    method: 'POST',
+  return request<API.BaseResponsePagePostVO_>("/api/post_thumb/list/page", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -36,12 +35,12 @@ export async function listFavourPostByPageUsingPost1(
 /** listMyThumbPostByPage POST /api/post_thumb/my/list/page */
 export async function listMyThumbPostByPageUsingPost(
   body: API.PostQueryRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponsePagePostVO_>('/api/post_thumb/my/list/page', {
-    method: 'POST',
+  return request<API.BaseResponsePagePostVO_>("/api/post_thumb/my/list/page", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),

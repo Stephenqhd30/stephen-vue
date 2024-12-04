@@ -17,12 +17,14 @@ const useUserStore = defineStore(
     const setLoginUser = (newLoginUser: API.LoginUserVO) => {
       loginUser.value = newLoginUser;
     };
-
+    
+    /**
+     * 获取当前登录用户信息
+     */
     const fetchLoginUser = async () => {
       const res = await getLoginUserUsingGet();
       if (res?.data?.code === 0 && res?.data?.data) {
         loginUser.value = res?.data?.data;
-        windows.localStorage.setItem("stephen-vue-token", res?.data?.data?.token);
       } else {
         loginUser.value = {
           userRole: AccessEnum.NOT_LOGIN,

@@ -1,12 +1,11 @@
-/* eslint-disable */
 // @ts-ignore
-import request from '../request.ts';
-import * as API from './types';
+/* eslint-disable */
+import request from "@/request.ts";
 
 /** download GET /api/excel/user/download */
-export async function downloadUsingGet(options?: { [key: string]: unknown }) {
-  return request<unknown>('/api/excel/user/download', {
-    method: 'GET',
+export async function downloadUsingGet(options?: { [key: string]: any }) {
+  return request<any>("/api/excel/user/download", {
+    method: "GET",
     ...(options || {}),
   });
 }
@@ -15,21 +14,21 @@ export async function downloadUsingGet(options?: { [key: string]: unknown }) {
 export async function importUserDataByExcelUsingPost(
   body: {},
   file?: File,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
   const formData = new FormData();
 
   if (file) {
-    formData.append('file', file);
+    formData.append("file", file);
   }
 
   Object.keys(body).forEach((ele) => {
-    const item = (body as { [key: string]: any })[ele];
+    const item = (body as any)[ele];
 
     if (item !== undefined && item !== null) {
-      if (typeof item === 'object' && !(item instanceof File)) {
+      if (typeof item === "object" && !(item instanceof File)) {
         if (item instanceof Array) {
-          item.forEach((f) => formData.append(ele, f || ''));
+          item.forEach((f) => formData.append(ele, f || ""));
         } else {
           formData.append(ele, JSON.stringify(item));
         }
@@ -39,12 +38,10 @@ export async function importUserDataByExcelUsingPost(
     }
   });
 
-  return request<API.BaseResponseMapStringObject_>('/api/excel/user/import', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
+  return request<API.BaseResponseMapStringObject_>("/api/excel/user/import", {
+    method: "POST",
     data: formData,
+    requestType: "form",
     ...(options || {}),
   });
 }

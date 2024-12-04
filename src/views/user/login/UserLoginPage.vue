@@ -3,7 +3,6 @@ import { reactive, ref } from "vue";
 import { message } from "ant-design-vue";
 import { useRouter } from "vue-router";
 import { userLoginUsingPost } from "@/api/userController.ts";
-import { UserLoginRequest } from "@/api/types.ts";
 import useUserStore from "@/store/modules/user";
 import {
   GithubOutlined,
@@ -30,6 +29,7 @@ const handleLoginSubmit = async () => {
   const res = await userLoginUsingPost(loginForm);
   try {
     if (res.data.code === 0 && res.data.data) {
+      localStorage.setItem('stephen-vue-token', res.data.data.token)
       await loginUserStore.fetchLoginUser();
       message.success("用户登录成功");
       await router.push({

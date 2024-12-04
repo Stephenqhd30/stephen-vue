@@ -1,17 +1,16 @@
-/* eslint-disable */
 // @ts-ignore
-import request from '../request.ts';
-import * as API from './types';
+/* eslint-disable */
+import request from "@/request.ts";
 
 /** addTag POST /api/tag/add */
 export async function addTagUsingPost(
   body: API.TagAddRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseLong_>('/api/tag/add', {
-    method: 'POST',
+  return request<API.BaseResponseLong_>("/api/tag/add", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -21,12 +20,12 @@ export async function addTagUsingPost(
 /** deleteTag POST /api/tag/delete */
 export async function deleteTagUsingPost(
   body: API.DeleteRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>('/api/tag/delete', {
-    method: 'POST',
+  return request<API.BaseResponseBoolean_>("/api/tag/delete", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -36,12 +35,12 @@ export async function deleteTagUsingPost(
 /** editTag POST /api/tag/edit */
 export async function editTagUsingPost(
   body: API.TagEditRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>('/api/tag/edit', {
-    method: 'POST',
+  return request<API.BaseResponseBoolean_>("/api/tag/edit", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -50,12 +49,12 @@ export async function editTagUsingPost(
 
 /** getTagVOById GET /api/tag/get/vo */
 export async function getTagVoByIdUsingGet(
-  // 叠加生成的Param类型 (非body参数openapi默认没有生成对象)
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.getTagVOByIdUsingGETParams,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseTagVO_>('/api/tag/get/vo', {
-    method: 'GET',
+  return request<API.BaseResponseTagVO_>("/api/tag/get/vo", {
+    method: "GET",
     params: {
       ...params,
     },
@@ -66,12 +65,12 @@ export async function getTagVoByIdUsingGet(
 /** listTagByPage POST /api/tag/list/page */
 export async function listTagByPageUsingPost(
   body: API.TagQueryRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponsePageTag_>('/api/tag/list/page', {
-    method: 'POST',
+  return request<API.BaseResponsePageTag_>("/api/tag/list/page", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -81,12 +80,12 @@ export async function listTagByPageUsingPost(
 /** listTagVOByPage POST /api/tag/list/page/vo */
 export async function listTagVoByPageUsingPost(
   body: API.TagQueryRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponsePageTagVO_>('/api/tag/list/page/vo', {
-    method: 'POST',
+  return request<API.BaseResponsePageTagVO_>("/api/tag/list/page/vo", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -94,11 +93,9 @@ export async function listTagVoByPageUsingPost(
 }
 
 /** listTagByTree GET /api/tag/list/tree */
-export async function listTagByTreeUsingGet(options?: {
-  [key: string]: unknown;
-}) {
-  return request<API.BaseResponseListTagDTO_>('/api/tag/list/tree', {
-    method: 'GET',
+export async function listTagByTreeUsingGet(options?: { [key: string]: any }) {
+  return request<API.BaseResponseListTagDTO_>("/api/tag/list/tree", {
+    method: "GET",
     ...(options || {}),
   });
 }
@@ -106,12 +103,12 @@ export async function listTagByTreeUsingGet(options?: {
 /** listMyTagVOByPage POST /api/tag/my/list/page/vo */
 export async function listMyTagVoByPageUsingPost(
   body: API.TagQueryRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponsePageTagVO_>('/api/tag/my/list/page/vo', {
-    method: 'POST',
+  return request<API.BaseResponsePageTagVO_>("/api/tag/my/list/page/vo", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -121,12 +118,12 @@ export async function listMyTagVoByPageUsingPost(
 /** updateTag POST /api/tag/update */
 export async function updateTagUsingPost(
   body: API.TagUpdateRequest,
-  options?: { [key: string]: unknown }
+  options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>('/api/tag/update', {
-    method: 'POST',
+  return request<API.BaseResponseBoolean_>("/api/tag/update", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
