@@ -1,13 +1,13 @@
 import {ref} from 'vue';
 import {defineStore} from 'pinia';
 import { getLoginUserUsingGet } from "@/api/userController.ts";
-import { ACCESS_ENUM } from "@/constants";
+import { AccessEnum } from "@/enums/AccessEnum.ts";
 
 /**
  * 登录用户信息全局状态
  */
 const useUserStore = defineStore(
-  "UserVO",
+  "LoginUserVO",
   () => {
     const loginUser = ref<API.LoginUserVO>({});
     /**
@@ -22,9 +22,10 @@ const useUserStore = defineStore(
       const res = await getLoginUserUsingGet();
       if (res?.data?.code === 0 && res?.data?.data) {
         loginUser.value = res?.data?.data;
+        windows.localStorage.setItem("stephen-vue-token", res?.data?.data?.token);
       } else {
         loginUser.value = {
-          userRole: ACCESS_ENUM.NOT_LOGIN,
+          userRole: AccessEnum.NOT_LOGIN,
         };
       }
     };
@@ -37,7 +38,7 @@ const useUserStore = defineStore(
       // @ts-ignore
       enable: true,
       // 选择存储方式和内容，
-      strategies: [{ storage: localStorage, paths: ["UserVO"] }],
+      strategies: [{ storage: sessionStorage, paths: ["LoginUserVO"] }],
     },
   },
 );

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { CopyrightCircleOutlined, GithubOutlined } from "@ant-design/icons-vue";
-import { AUTHOR, AUTHOR_NAME, BLOG, GITHUB, TITLE } from '@/constants';
+import { AUTHOR, AUTHOR_NAME, BLOG, GITHUB, TITLE } from "@/constants";
 </script>
 
 <template>

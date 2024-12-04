@@ -1,4 +1,4 @@
-export const ACCESS_ENUM = {
+export const AccessEnum = {
   NOT_LOGIN: "notLogin",
   USER: "user",
   ADMIN: "admin",

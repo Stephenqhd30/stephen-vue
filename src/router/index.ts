@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { routes } from "./routes.ts";
-import { ACCESS_ENUM } from '@/constants';
 import { checkAccess } from "../utils";
-import useUserStore from '@/store/modules/user';
+import useUserStore from "@/store/modules/user";
+import { AccessEnum } from "@/enums/AccessEnum.ts";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,14 +22,14 @@ router.beforeEach(async (to, from, next) => {
     loginUser = loginUserStore.loginUser;
   }
   // 判断当前页面需要的权限
-  const needAccess = (to.meta?.access as string) ?? ACCESS_ENUM.NOT_LOGIN;
+  const needAccess = (to.meta?.access as string) ?? AccessEnum.NOT_LOGIN;
   // 需要跳转的页面必须要登录
-  if (needAccess !== ACCESS_ENUM.NOT_LOGIN) {
+  if (needAccess !== AccessEnum.NOT_LOGIN) {
     // 如果没有登录，跳转到登录页面
     if (
       !loginUser ||
       !loginUser.userRole ||
-      loginUser.userRole === ACCESS_ENUM.NOT_LOGIN
+      loginUser.userRole === AccessEnum.NOT_LOGIN
     ) {
       next(`/user/login?redirect=${to.fullPath}`);
     }

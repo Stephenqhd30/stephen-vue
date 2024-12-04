@@ -1,8 +1,9 @@
 import axios from "axios";
+import { BASE_URL } from "@/constants";
 
 // 创建自己的axios实例
 const request = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: BASE_URL,
   timeout: 10000,
   withCredentials: true,
 });
@@ -10,11 +11,18 @@ const request = axios.create({
 // 请求拦截器
 request.interceptors.request.use(
   (config: any) => {
+    const token = localStorage.getItem("stephen-vue-token");
+    if (token) {
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${token}`,
+      };
+    }
     return config;
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // 响应拦截器
@@ -43,7 +51,7 @@ request.interceptors.response.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 export default request;
